@@ -98,6 +98,9 @@ export class AbstractEditor {
       let path = this.path.split('.')
       path[path.length - 1] = dependency
       path = path.join('.')
+      if (dependency.includes('.')) {
+        path = dependency
+      }
       this.jsoneditor.watch(path, () => {
         this.evaluateDependencies()
       })
@@ -122,6 +125,9 @@ export class AbstractEditor {
       let path = this.path.split('.')
       path[path.length - 1] = dependency
       path = path.join('.')
+      if (dependency.includes('.')) {
+        path = dependency
+      }
       const choices = deps[dependency]
       this.checkDependency(path, choices)
     })
